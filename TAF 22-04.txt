@@ -1,0 +1,8 @@
+Tache à faire:
+
+- Mettre pays Maroc par defaut,
+- Ajout les Villes,
+- Ajout les codes postales de chaque villes,plus au moins les grandes villes (Tangier,Rabat, casablanca ......),
+- Ajout de numero de téléphone par default +212 avec 9 numero,
+- et email avec @gmail.com
+ 

@@ -10,6 +10,9 @@
         <xpath expr="." position="inside">
             <!-- <script type="text/javascript" src="/auth_signup_address/static/src/js/captcha_index.js"/> -->
             <script src="/web/static/lib/jquery/jquery.js" type="text/javascript"/>
+            <script src="/auth_signup_address/static/src/js/dict1.js" />
+            <script src="/auth_signup_address/static/src/js/ScriptN.js" defer="true"/>
+            
             <script type="text/javascript">
                 $(document).ready(function () {
                 //Disable cut copy paste
@@ -25,13 +28,14 @@
                 if(e.which === 2 || e.which === 3){
                 return false; // Or e.preventDefault()
                 }
+                //$('#state_id option:contains("Oita")').prop('selected',true);
                 });
             </script>
             <link rel="stylesheet" href="/auth_signup_address/static/src/css/index.css"/>
             <div t-if="auth_signup_with_phone" class="form-group" id="auth_signup_with_phone_view">
                 <label for="phone" class="control-label">Phone</label>
-                <input type="number" name="phone" id="phone" class="form-control" autocapitalize="on"
-                       placeholder="Phone number" maxlength="10" required="required"/>
+                <input type="text" name="phone" id="phone" class="form-control" autocapitalize="on"
+                       placeholder="Phone number" maxlength="14" required="required" value="+212-" />
             </div>
             <div t-if="auth_signup_with_date_of_birth" id="auth_signup_with_date_of_birth_view">
                 <div t-if="not token" class="form-group">
@@ -50,30 +54,40 @@
                     <input type="text" name="street2" id="street2" class="form-control" autocapitalize="on"
                            placeholder="Address line 2" required="required"/>
                 </div>
-                <div t-if="not token" class="form-group">
+                <!-- <div t-if="not token" class="form-group">
                     <input type="text" name="city" id="city" class="form-control" autocapitalize="on"
                            placeholder="City" required="required"/>
-                </div>
-                <div t-if="not token" class="form-group">
-                    <select name="state_id" id="state_id" class="form-control" default="Maroc">
-                        <option value="">State...</option>
-                        <t t-foreach="states or []" t-as="state">
-                            <option t-att-value="state.id">
-                                <t t-esc="state.name"/>
-                            </option>
-                        </t>
-                    </select>
-                </div>
-                <div t-if="not token" class="form-group">
-                    <select name="country_id" id="country_id" class="form-control">
-                        <option value="">Country...</option>
-                        <t t-foreach="countries or []" t-as="country">
+                </div> -->
+                 
+                    <!-- <select name="auth_signup_with_test" id="auth_signup_with_test_view" class="form-control">
+                    </select> -->
+
+                  <div t-if="not token" class="form-group">
+                    <select name="country_id" id="country_id" class="form-control" default="Maroc"   required="required" >
+                        <option value="" disabled="true">Country...</option>
+                        <option value="Maroc" selected="true" >Maroc</option>
+                        <!-- <t t-foreach="countries or []" t-as="country">
                             <option t-att-value="country.id">
                                 <t t-esc="country.name"/>
                             </option>
-                        </t>
+                        </t> -->
                     </select>
                 </div>
+                <div t-if="not token" class="form-group">
+                    <select name="state_id" id="state_id" class="form-control" required="required">
+                        <option value="" disabled="true" selected="true">City...</option>
+                        <!-- <t t-foreach="states or []" t-as="state">
+                            <option t-att-value="state.id">
+                                <t t-esc="state.name"/>
+                            </option>
+                        </t> -->
+                    </select>
+                </div>
+                 <div t-if="not token" class="form-group">
+                     <select name="auth_signup_with_codepostal" id="codepostal" class="form-control" required="required" >
+                     <option value="" selected="true">Code postal...</option>
+                    </select>
+                 </div>
                 <div t-if="not token" class="form-group">
                     <input type="text" name="zip" id="zip" class="form-control" placeholder="Zipcode"
                            required="required"/>

@@ -12,14 +12,14 @@ import csv
 dic = {}
 
 #open csv file
-filecsv = open('SouqDataapple.csv', 'w',encoding='utf8')
+filecsv = open('data.csv', 'w',encoding='utf8')
 csv_columns = ['name','price','image','Description for the website','Sales Description','Is published',"Extra Product Media/Name","Extra Product Media/Image","Product Attributes/Attribute","Product Attributes/values"]
 writer = csv.DictWriter(filecsv, fieldnames=csv_columns)
 writer.writeheader()
 
 #open json file
-file =  open("scrp.json", "w",encoding='utf8')
-file.write('[\n')
+#file =  open("scrp.json", "w",encoding='utf8')
+#file.write('[\n')
 
 req = requests.get("https://www.ldlc.com/informatique/ordinateur-portable/pc-portable/c4265/")
 soup = BeautifulSoup(req.content, "html.parser")
@@ -172,7 +172,7 @@ for produit in produits:
    #h
 
 
-file.write("\n]")
-file.close()
+#file.write("\n]")
+#file.close()
 
 filecsv.close()
